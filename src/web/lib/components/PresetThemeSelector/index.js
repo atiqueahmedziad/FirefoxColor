@@ -14,6 +14,8 @@ export const PresetThemeSelector = ({
     { theme: item }
   ]);
 
+  console.log("setTheme", setTheme);
+
   return (
     <PaginatedThemeSelector
       title="Preset themes"
@@ -21,6 +23,7 @@ export const PresetThemeSelector = ({
       className="preset-theme-selector"
       previewClassName="preset-theme-preview"
       onClick={theme => {
+        console.log("theme is ", theme);
         setTheme({ theme });
       }}
       perPage={9}

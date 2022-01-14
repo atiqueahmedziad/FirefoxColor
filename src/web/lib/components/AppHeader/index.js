@@ -1,5 +1,5 @@
 import React from "react";
-import classnames from "classnames";
+import headerButton from "../HeaderButton";
 
 import {
   generateComplementaryTheme,
@@ -18,6 +18,7 @@ import iconShare from "./icon_share.svg";
 import iconExport from "./icon_export.svg";
 
 import "./index.scss";
+import { ThemeImportButton } from "../ThemeImportButton";
 
 export const AppHeader = props => {
   const {
@@ -86,30 +87,6 @@ export const AppHeader = props => {
     setUpdate(false);
   };
 
-  const headerButton = (
-    onClickButton,
-    icon,
-    text,
-    disabledCheck = true,
-    children = null
-  ) => (
-    <React.Fragment>
-      <button
-        title={text}
-        className={classnames("app-header__button", `${text}`, {
-          disabled: !disabledCheck
-        })}
-        onClick={onClickButton}
-      >
-        <div className="app-header__button-icon">
-          <img src={icon} width="20" height="auto" aria-hidden="true" />
-        </div>
-        <span>{text}</span>
-      </button>
-      {children}
-    </React.Fragment>
-  );
-
   const withUpdate = onClickButton => {
     onClickButton();
     setUpdate(true);
@@ -164,6 +141,8 @@ export const AppHeader = props => {
             {displayShareModal && <ThemeUrl {...props} />}
           </React.Fragment>
         )}
+
+        {<ThemeImportButton setTheme={setTheme} />}
 
         {hasExtension &&
           headerButton(
